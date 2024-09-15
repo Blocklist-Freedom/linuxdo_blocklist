@@ -6,8 +6,8 @@
 // @author       zxkmm
 // @author       frostime
 // @author       TCOTC
-// @homepage     https://github.com/zxkmm/ld246_blacklist
-// @supportURL   https://github.com/zxkmm/ld246_blacklist/issues
+// @homepage     https://github.com/Blocklist-Freedom/linuxdo_blocklist
+// @supportURL   https://github.com/Blocklist-Freedom/linuxdo_blocklist/issues
 // @match        https://linux.do/*
 // @grant        GM_setValue
 // @grant        GM_getValue
