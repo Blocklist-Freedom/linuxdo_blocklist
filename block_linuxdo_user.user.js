@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         block_discourse_user
+// @name         屏蔽linuxdo用户
 // @namespace    Violentmonkey Scripts
 // @version      0.1.4
-// @description  block posts that made by specific discourse user
+// @description  屏蔽指定linuxdo用户的帖子
 // @author       zxkmm
 // @author       frostime
 // @author       TCOTC
 // @homepage     https://github.com/zxkmm/ld246_blacklist
 // @supportURL   https://github.com/zxkmm/ld246_blacklist/issues
-// @match        https://YOUR.DISCOURSE.LINK/*
+// @match        https://linux.do/*
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_deleteValue
@@ -183,7 +183,7 @@
     uiContainer.style.display = "none";
 
     const toggleButton = document.createElement("button");
-    toggleButton.textContent = "Manage Blocklist";
+    toggleButton.textContent = "黑名单管理";
     toggleButton.className = "toggle-button";
 
     toggleButton.addEventListener("click", () => {
@@ -193,10 +193,10 @@
 
     const input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Leave empty to auto add current guy";
+    input.placeholder = "留空自动加当前人";
 
     const addButton = document.createElement("button");
-    addButton.textContent = "Add";
+    addButton.textContent = "添加到黑名单";
     addButton.addEventListener("click", () => {
       var username = input.value.trim();
       if (!username) {
@@ -217,7 +217,7 @@
 
       publicShameUser.forEach((user) => {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `${user} <span style="color: #888;">（public shame user🤡，can't delete）</span>`;
+        listItem.innerHTML = `${user} <span style="color: #888;">（这位是🤡，无法删除）</span>`;
         blockedUsersList.appendChild(listItem);
       });
 
@@ -225,7 +225,7 @@
         const listItem = document.createElement("li");
         listItem.innerHTML = `
             <span>${user}</span>
-            <button class="delete-button">Delete</button>
+            <button class="delete-button">删除</button>
           `;
         const deleteButton = listItem.querySelector(".delete-button");
         deleteButton.addEventListener("click", () => {
@@ -239,9 +239,9 @@
 
     const remindWaySelect = document.createElement("select");
     const remindWays = [
-      { value: "hide", text: "Hide" },
-      { value: "blur", text: "Blur(Hover to cancel)" },
-      { value: "opacity", text: "Greyed out" },
+      { value: "hide", text: "隐藏" },
+      { value: "blur", text: "模糊(悬浮时取消)" },
+      { value: "opacity", text: "白雾" },
     ];
     remindWays.forEach((way) => {
       const option = document.createElement("option");
@@ -259,7 +259,7 @@
     });
 
     const label = document.createElement("label");
-    label.textContent = "Block Style: ";
+    label.textContent = "标记帖子方式: ";
     label.appendChild(remindWaySelect);
     label.style.color = "#e0e0e0";
 
@@ -326,7 +326,7 @@
       overlay.style.zIndex = "9999";
       overlay.style.fontSize = "32px";
       overlay.style.textAlign = "center";
-      overlay.textContent = `Fetched this guy: ${username}，added`;
+      overlay.textContent = `自动获取到这位用户: ${username}，请核实，已添加`;
 
       document.body.appendChild(overlay);
 
